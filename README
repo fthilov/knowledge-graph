@@ -1,0 +1,65 @@
+# Data Warehouse - Program Design
+
+## Structure of the Project
+
+### init.ipynb
+
+This is the notebook where the database connection is established and is used in all other notebooks at the beginning.
+
+### graph_creation.ipynb
+
+This notebook is used to create the knowledge graph. It contains the code to create the nodes and relationships in the graph.
+
+### csv_export.ipynb
+
+This notebook is used to export the data from the graph to CSV files. It contains the code to export the nodes and relationships in the graph.
+
+### excel_export.ipynb
+
+This notebook is used to export the data from the graph to Excel files. It contains the code to export the nodes and relationships in the graph.
+
+## Structure of Knowledge Graph
+
+### There are following nodes:
+
+-   Doctor
+-   Topic
+-   SubTopic
+-   Illness
+-   Symptom
+-   Cause
+-   Treatment
+-   Patient
+-   Drug
+-   Diagnosis
+-   Hospital
+-   Allergy
+-   Insurance
+-   Department
+
+### There are following relationships:
+
+-   Doctor -> Topic: IS_SPECIALIST_IN
+-   Doctor -> Treatment: PRESCRIBES
+-   Doctor -> Diagnosis: HAS_DIAGNOSED
+-   Doctor -> Drug: PRESCRIBES
+-   Doctor -> Patient: TREATS
+-   Doctor -> Hospital: WORKS_IN
+
+-   Topic -> SubTopic: INCLUDES
+
+-   Illness -> Caus: IS_CAUSED_BY
+-   Illness -> SubTopic: BELONGS_TO
+-   Illness -> Treatment: IS_TREATED_BY
+
+-   Symptom -> Illness: IS_SYMPTOM_OF
+
+-   Patient -> Illness: HAS
+-   Patient -> Symptom: SHOWS
+-   Patient -> Treatment: RECEIVES
+-   Patient -> Drug: TAKES
+-   Patient -> Diagnosis: RECEIVES
+-   Patient -> Allergy: HAS
+-   Patient -> Hospital: VISITS
+
+-   Hospital -> Department: HAS
