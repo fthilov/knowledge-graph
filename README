@@ -39,7 +39,7 @@ This notebook is used to export the data from the graph to Excel files. It conta
 
 ### There are following relationships:
 
--   Doctor -> Topic: IS_SPECIALIST_IN
+-   Doctor -> Topic: PECIALIST_IN
 -   Doctor -> Treatment: PRESCRIBES
 -   Doctor -> Diagnosis: HAS_DIAGNOSED
 -   Doctor -> Drug: PRESCRIBES
@@ -48,11 +48,11 @@ This notebook is used to export the data from the graph to Excel files. It conta
 
 -   Topic -> SubTopic: INCLUDES
 
--   Illness -> Caus: IS_CAUSED_BY
+-   Illness -> Caus: AUSED_BY
 -   Illness -> SubTopic: BELONGS_TO
--   Illness -> Treatment: IS_TREATED_BY
+-   Illness -> Treatment: TREATED_BY
 
--   Symptom -> Illness: IS_SYMPTOM_OF
+-   Symptom -> Illness: SYMPTOM_OF
 
 -   Patient -> Illness: HAS
 -   Patient -> Symptom: SHOWS
