@@ -11,45 +11,57 @@ To start the project you need the follow the following steps:
 1. **Initialise Project**
 
    ```bash
-   python setup.py install
+   python3 setup_project.py
    ```
 
-2. **Prepare directories**
-   - Create a folder named `export` inside the `data` directory.
+> **Note:** If `Initialise Project` does not work , you can activate the virtual environment and install the requirements manually:
+>
+>
+> **Create a virtual environment**
+>   ```bash
+>   python3 -m venv venv
+>    ```
+> **Activate the virtual environment**
+> Windows (CMD)
+>  ```bash
+> venv\Scripts\activate.bat
+> ```
+> Windows (PowerShell)
+> ```bash
+> venv\Scripts\Activate.ps1
+> ```
+> MacOS
+>   ```bash
+>   source venv/bin/activate
+> ```
+> 
+> **Install dependencies**
+>   ```bash
+>   pip install -r requirements.txt
+>   ```
 
-3. **Create a virtual environment**
-   ```bash
-   python3 -m venv venv
-    ```
-   ```bash
-   source venv/bin/activate
-   ```
 
-4. **Install dependencies**
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-5. **Install Neo4j**
-   - Go to following [Website](https://neo4j.com/download/) and download **Neo4j Desktop**.
-   - Fill out the **form** to register (tip: you can fill out the form with random data if you don't want to
+2. **Install Neo4j**
+    - Go to following [Website](https://neo4j.com/download/) and download **Neo4j Desktop**.
+    - Fill out the **form** to register (tip: you can fill out the form with random data if you don't want to
       expose private data)
-   - Copy `Activation Key` to clipboard (you need the key later on)
-   - Follow casual installation process
-   - After you have agreeded the terms you can paste your `Activation Key` to the **Software Key** field
-       to finish the installation process.
+    - Copy `Activation Key` to clipboard (you need the key later on)
+    - Follow casual installation process
+    - After you have agreeded the terms you can paste your `Activation Key` to the **Software Key** field
+      to finish the installation process.
 
-6. **Set up the Neo4j database**
-   - To create a new project, click the button in the top-left corner.
-   - To add a local DBMS, click the blue "Add" button in the middle of the screen.
-   - Enter "neo4j" as the name and "test1234" as the password. You can choose any name and password, 
-   but you'll need to make a change in the init_connection function.
-   - Click on "Create" and then start the database by clicking "Start"
-   - You can now run the Jupyter Notebook. If you used a different combination 
-   of USERNAME and PASSWORD than neo4j and test1234, be sure to change the values in the helper_functions file `init_connection()`.
+3. **Set up the Neo4j database**
+    - To create a new project, click the button in the top-left corner.
+    - To add a local DBMS, click the blue "Add" button in the middle of the screen.
+    - Enter "neo4j" as the name and "test1234" as the password. You can choose any name and password,
+      but you'll need to make a change in the init_connection function.
+    - Click on "Create" and then start the database by clicking "Start"
+    - You can now run the Jupyter Notebook. If you used a different combination
+      of USERNAME and PASSWORD than neo4j and test1234, be sure to change the values in the helper_functions file
+      `init_connection()`.
 
-7. Run the `main.ipynb` notebook and select the virtual environment as kernel
-8. Optional: You get a modal where you should click `Install`
+4. Run the `main.ipynb` notebook and select the virtual environment as kernel
+5. Optional: You get a modal where you should click `Install`
 
 ---
 
@@ -93,45 +105,45 @@ correctly afterwards.
 
 ### There are following nodes:
 
--   Doctor
--   Topic
--   SubTopic
--   Illness
--   Symptom
--   Cause
--   Treatment
--   Patient
--   Drug
--   Diagnosis
--   Hospital
--   Allergy
--   Insurance
--   Department
+- Doctor
+- Topic
+- SubTopic
+- Illness
+- Symptom
+- Cause
+- Treatment
+- Patient
+- Drug
+- Diagnosis
+- Hospital
+- Allergy
+- Insurance
+- Department
 
 ### There are following relationships:
 
--   Doctor -> Topic: SPECIALIST_IN
--   Doctor -> Treatment: PRESCRIBES
--   Doctor -> Diagnosis: HAS_DIAGNOSED
--   Doctor -> Drug: PRESCRIBES
--   Doctor -> Patient: TREATS
--   Doctor -> Hospital: WORKS_IN
+- Doctor -> Topic: SPECIALIST_IN
+- Doctor -> Treatment: PRESCRIBES
+- Doctor -> Diagnosis: HAS_DIAGNOSED
+- Doctor -> Drug: PRESCRIBES
+- Doctor -> Patient: TREATS
+- Doctor -> Hospital: WORKS_IN
 
--   Topic -> SubTopic: INCLUDES
+- Topic -> SubTopic: INCLUDES
 
--   Illness -> Cause: CAUSED_BY
--   Illness -> SubTopic: BELONGS_TO
--   Illness -> Treatment: TREATED_BY
+- Illness -> Cause: CAUSED_BY
+- Illness -> SubTopic: BELONGS_TO
+- Illness -> Treatment: TREATED_BY
 
--   Symptom -> Illness: SYMPTOM_OF
+- Symptom -> Illness: SYMPTOM_OF
 
--   Patient -> Illness: HAS
--   Patient -> Symptom: SHOWS
--   Patient -> Treatment: RECEIVES
--   Patient -> Drug: TAKES
--   Patient -> Diagnosis: RECEIVES
--   Patient -> Allergy: HAS
--   Patien -> Insurance: HAS
--   Patient -> Hospital: VISITS
+- Patient -> Illness: HAS
+- Patient -> Symptom: SHOWS
+- Patient -> Treatment: RECEIVES
+- Patient -> Drug: TAKES
+- Patient -> Diagnosis: RECEIVES
+- Patient -> Allergy: HAS
+- Patien -> Insurance: HAS
+- Patient -> Hospital: VISITS
 
--   Hospital -> Department: HAS
+- Hospital -> Department: HAS
