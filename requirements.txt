@@ -2,3 +2,4 @@ pandas==2.2.3
 py2neo==2021.2.4
 setuptools==78.1.0
 termcolor==3.0.1
+openpyxl>=3.0.0
