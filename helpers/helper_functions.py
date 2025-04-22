@@ -1,12 +1,13 @@
 import timeit
 import pandas as pd
 from py2neo import Graph
-import datetime as dt
+from termcolor import colored
 
-def init_connection():
+def init_connection() -> Graph | None:
     """
     Function initializes a connection to the Neo4j database.
     """
+
     # define connection parameters
     DATABASE_URL = "bolt://localhost:7687"
     USERNAME = "neo4j"
@@ -22,17 +23,25 @@ def init_connection():
 
 
 # function to create a node with a label and properties 
-def get_all_labels(graph: Graph):
+def get_all_labels(graph: Graph) -> list[str]:
     """
     Function to retrieve all labels from the Neo4j database.
     """
+
+    # define query to get all labels of the current database state
     query = "CALL db.labels()"
+
+    # run the query and store the result as a variable
     result = graph.run(query)
+
+    # iterate over all record in the result and store the values as a list
     labels = [record['label'] for record in result]
+
+    # return the list of labels
     return labels
 
 
-def create_worksheet_lists(excel_file: pd.ExcelFile):
+def create_worksheet_lists(excel_file: pd.ExcelFile) -> tuple[list[str]]:
     """
     Function creating two lists: one for node worksheets and one for relationship worksheets.
     It reads an Excel file containing the knowledge graph data and categorizes the sheets based on their names.
@@ -66,7 +75,7 @@ def create_worksheet_lists(excel_file: pd.ExcelFile):
     return node_worksheets, rel_worksheets
 
 
-def create_nodes(worksheets: list[str], excel_file: pd.ExcelFile, graph):
+def create_nodes(worksheets: list[str], excel_file: pd.ExcelFile, graph) -> None:
     """
     This function creates nodes in the Neo4j database based on the data from the node worksheets.
     It reads each worksheet, formats the properties of each node, and executes a Cypher query to create the nodes.
@@ -95,10 +104,10 @@ def create_nodes(worksheets: list[str], excel_file: pd.ExcelFile, graph):
         print(f"Created {len(df)} nodes with the label '{worksheet}'")
 
     # print the total number of node types created
-    print("All nodes have been created successfully. In total: ", len(worksheets), " node types.\n")
+    print(colored(f"All nodes have been created successfully. In total: {len(worksheets)} node types.\n", "green"))
 
 
-def create_relationships(worksheets: list[str], excel_file: pd.ExcelFile, graph: Graph):
+def create_relationships(worksheets: list[str], excel_file: pd.ExcelFile, graph: Graph) -> None:
     """
     This function creates relationships in the Neo4j database based on the data from the relationship worksheets.
     It reads each worksheet, extracts the necessary information, and executes a Cypher query to create the relationships.
@@ -128,25 +137,27 @@ def create_relationships(worksheets: list[str], excel_file: pd.ExcelFile, graph:
         print(f"Created {len(df)} relationships from a '{worksheet.split("_")[1]}' node")
 
     # print the total number of relationship types created
-    print("All relationships have been created successfully.\n")
+    print(colored("All relationships have been created successfully.\n", "green"))
 
 
-def excel_import(excel_file: pd.ExcelFile, graph: Graph):
+def excel_import(excel_file: pd.ExcelFile, graph: Graph) -> None:
     """
     This function imports data from an Excel file into the Neo4j database.
     """
 
     # create node and relationship worksheet lists
     node_worksheets, rel_worksheets = create_worksheet_lists(excel_file=excel_file)
-    # create nodes and relationships in the Neo4j database
+
+    # create nodes and relationships in the Neo4j database by calling the specified functions
     create_nodes(worksheets=node_worksheets, excel_file=excel_file, graph=graph)
     create_relationships(worksheets=rel_worksheets, excel_file=excel_file, graph=graph)
 
 
-def export_to_excel(current_time: str, graph: Graph, export_path: str):
+def export_to_excel(current_time: str, graph: Graph, export_path: str) -> None:
     """
     This function exports data from the Neo4j database to an Excel file.
     """
+
     # define the file path where the Excel file will be saved
     file_path = f"{export_path}/export_{current_time}.xlsx"
     # create a Pandas Excel writer using Openpyxl as the engine
@@ -178,7 +189,8 @@ def export_to_excel(current_time: str, graph: Graph, export_path: str):
     # close the Pandas Excel writer and save the file
     writer.close()
 
-    print("Export completed. File saved at:", file_path)
+    # print the status that the export was completed successfully
+    print(colored(f"Export completed. File saved at: {file_path}", "green"))
 
 
 def test_query(query: str, graph: Graph) -> pd.DataFrame:
@@ -186,15 +198,29 @@ def test_query(query: str, graph: Graph) -> pd.DataFrame:
     This function executes a performance test on a given Cypher query.
     """
 
+    # measure the time of running the query 100-times with the globals variables
     execution_time = timeit.timeit("graph.run(query).data()", number=100, globals={"graph": graph, "query": query})
-    print(f"Average execution time: {execution_time / 100} seconds")
 
+    # print the average execution time of all 100 runs by dividing by 100
+    print(f"Average execution time: {execution_time / 100} seconds")
+    
+    # run the query and extract to data out of the response
     result = graph.run(query).data()
+
+    # return the result as a dataframe
     return pd.DataFrame(result)
 
-def reset_db(graph: Graph):
+
+def reset_db(graph: Graph) -> None:
     """
     This function resets the Neo4j database by dropping all nodes and relationships.
     """
-    graph.run("MATCH (n) DETACH DELETE n")
-    print("Database reset completed.")
+
+    # define the query to delete all nodes and relationships
+    query = "MATCH (n) DETACH DELETE n"
+
+    # run the query to delete all nodes and relationships
+    graph.run(query)
+
+
+    print(colored("!!! Database reset completed !!!", "green"))
