@@ -68,85 +68,95 @@ To start the project you need the follow the following steps:
 
 ---
 
-## Structure of the Project
+## Project Structure
 
-### main.ipynb
+### `main.ipynb`
 
 This notebook is used to create the knowledge graph.
 
-### io / export.ipynb
+### `io/export.ipynb`
 
 This notebook is used to export the data from the graph to Excel files.
 
-### io / import.ipynb
+### `io/import.ipynb`
 
 This notebook is used to import new data from an Excel file into the graph.
 
-### helpers / helper_functions.py
+### `helpers/helper_functions.py`
 
 This Python file contains all necessary functions used in the notebooks listed above.
 This is needed to avoid Code duplication and keep the whole project clean.
 
-### data - Directory
+### `data` - Directory
 
 In this directory there is one `export` and one `import` directory. In the `export` directory all exports will be
 saved. In the `import` directory you can store the data that should be added to the graph the next time you run
 the import notebook.
 
-### tests / tests.ipynb
+### `tests/tests.ipynb`
 
 This notebook contains all functional and non-functional tests regarding this project.
 
-### setup.py
+### `setup.py`
 
 This Python file is used to setup the whole project correctly. It's necessary to import all packages
 correctly afterwards.
 
+### `setup_project.py`
+This Python file is used to setup the virtual environment and to install all necessary packages.
+
 ---
 
-## Structure of Knowledge Graph
+## Knowledge Graph Structure
 
-### There are following nodes:
+### Nodes
 
-- Doctor
-- Topic
-- SubTopic
-- Illness
-- Symptom
-- Cause
-- Treatment
-- Patient
-- Drug
-- Diagnosis
-- Hospital
-- Allergy
-- Insurance
-- Department
+- `Doctor`
+- `Topic`
+- `SubTopic`
+- `Illness`
+- `Symptom`
+- `Cause`
+- `Treatment`
+- `Patient`
+- `Drug`
+- `Diagnosis`
+- `Hospital`
+- `Allergy`
+- `Insurance`
+- `Department`
 
-### There are following relationships:
+### Relations:
 
-- Doctor -> Topic: SPECIALIST_IN
-- Doctor -> Treatment: PRESCRIBES
-- Doctor -> Diagnosis: HAS_DIAGNOSED
-- Doctor -> Drug: PRESCRIBES
-- Doctor -> Patient: TREATS
-- Doctor -> Hospital: WORKS_IN
+**Doctor**
+- `Doctor` → `Topic`: `SPECIALIST_IN`
+- `Doctor` → `Treatment`: `PRESCRIBES`
+- `Doctor` → `Diagnosis`: `HAS_DIAGNOSED`
+- `Doctor` → `Drug`: `PRESCRIBES`
+- `Doctor` → `Patient`: `TREATS`
+- `Doctor` → `Hospital`: `WORKS_IN`
 
-- Topic -> SubTopic: INCLUDES
+**Topic**
+- `Topic` → `SubTopic`: `INCLUDES`
 
-- Illness -> Cause: CAUSED_BY
-- Illness -> SubTopic: BELONGS_TO
-- Illness -> Treatment: TREATED_BY
+**Illness**
+- `Illness` → `Cause`: `CAUSED_BY`
+- `Illness` → `SubTopic`: `BELONGS_TO`
+- `Illness` → `Treatment`: `TREATED_BY`
 
-- Symptom -> Illness: SYMPTOM_OF
+**Symptom**
+- `Symptom` → `Illness`: `SYMPTOM_OF`
 
-- Patient -> Illness: HAS
-- Patient -> Symptom: SHOWS
-- Patient -> Treatment: RECEIVES
-- Patient -> Drug: TAKES
-- Patient -> Diagnosis: RECEIVES
-- Patient -> Allergy: HAS
-- Patien -> Insurance: HAS
-- Patient -> Hospital: VISITS
+**Patient**
+- `Patient` → `Illness`: `HAS`
+- `Patient` → `Symptom`: `SHOWS`
+- `Patient` → `Treatment`: `RECEIVES`
+- `Patient` → `Drug`: `TAKES`
+- `Patient` → `Diagnosis`: `RECEIVES`
+- `Patient` → `Allergy`: `HAS`
+- `Patient` → `Insurance`: `HAS`
+- `Patient` → `Hospital`: `VISITS`
 
-- Hospital -> Department: HAS
+**Hospital**
+- `Hospital` → `Department`: `HAS`
+
