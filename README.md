@@ -22,6 +22,7 @@ To start the project you need the follow the following steps:
 >   python3 -m venv venv
 >    ```
 > **Activate the virtual environment**
+> 
 > Windows (CMD)
 >  ```bash
 > venv\Scripts\activate.bat
