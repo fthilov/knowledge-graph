@@ -45,7 +45,7 @@ To start the project you need the follow the following steps:
 
 
 2. **Install Neo4j**
-    - Go to following [Website](https://neo4j.com/download/) and download **Neo4j Desktop**.
+    - Go to [https://neo4j.com/download/](https://neo4j.com/download/) and download **Neo4j Desktop**.
     - Fill out the **form** to register (tip: you can fill out the form with random data if you don't want to
       expose private data)
     - Copy `Activation Key` to clipboard (you need the key later on)
