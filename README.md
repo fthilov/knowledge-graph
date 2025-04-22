@@ -14,34 +14,34 @@ To start the project you need the follow the following steps:
    python3 setup_project.py
    ```
 
-> **Note:** If `Initialise Project` does not work , you can activate the virtual environment and install the requirements manually:
->
->
-> **Create a virtual environment**
->   ```bash
->   python3 -m venv venv
->    ```
-> **Activate the virtual environment**
-> 
-> Windows (CMD)
->  ```bash
-> venv\Scripts\activate.bat
-> ```
-> Windows (PowerShell)
-> ```bash
-> venv\Scripts\Activate.ps1
-> ```
-> MacOS
->   ```bash
->   source venv/bin/activate
-> ```
-> 
-> **Install dependencies**
-> 
-> Run inside the virtual environment:
->   ```bash
->   pip install -r requirements.txt
->   ```
+   > **Note:** If `Initialise Project` does not work , you can activate the virtual environment and install the requirements manually:
+   >
+   >
+   > **Create a virtual environment**
+   >   ```bash
+   >   python3 -m venv venv
+   >    ```
+   > **Activate the virtual environment**
+   > 
+   > Windows (CMD)
+   >  ```bash
+   > venv\Scripts\activate.bat
+   > ```
+   > Windows (PowerShell)
+   > ```bash
+   > venv\Scripts\Activate.ps1
+   > ```
+   > MacOS
+   >   ```bash
+   >   source venv/bin/activate
+   > ```
+   > 
+   > **Install dependencies**
+   > 
+   > Run inside the virtual environment:
+   >   ```bash
+   >   pip install -r requirements.txt
+   >   ```
 
 
 2. **Install Neo4j**
