@@ -1,22 +1,67 @@
 # Data Warehouse - Program Design
 
+## Start the Project
+
+To start the project you need the follow the following steps:
+
+1.  Run: `python setup.py install`
+2.  `Create` an export folder under the **data** directory
+3.  `Create` a virtual environment
+    1. Run: `python3 -m venv venv`
+    2. Run: `source venv/bin/activate`
+4.  Run: `pip install -r requirements.txt`
+5.  Install Neo4j for your computer:
+    1. Go to following [Website](https://neo4j.com/download/) and download **Neo4j Desktop**.
+    2. Fill out the **form** to register (tip: you can fill out the form with random data if you don't want to
+       expose private data)
+    3. Copy `Activation Key` to clipboard (you need the key later on)
+    4. Follow casual installation process
+    5. After you have agreeded the terms you can paste your `Activation Key` to the **Software Key** field
+       to finish the installation process.
+6.  Setup Neo4j Desktop Database:
+    1. To create a new project, click the button in the top-left corner.
+    2. To add a local DBMS, click the blue "Add" button in the middle of the screen.
+    3. Enter "neo4j" as the name and "test1234" as the password. You can choose any name and password, but you'll
+       need to make a change in the init_connection function.
+    4. Click on "Create" and then start the database by clicking "Start"
+    5. You can now run the Jupyter Notebook. If you used a different combination of USERNAME and PASSWORD than
+       neo4j and test1234, be sure to change the values in the helper_functions file (init_connection()).
+7.  `Run` the main.ipynb notebook and select the virtual environment as kernel
+8.  Optional: You get a modal where you should click `Install`
+
 ## Structure of the Project
 
-### init.ipynb
+### main.ipynb
 
-This is the notebook where the database connection is established and is used in all other notebooks at the beginning.
+This notebook is used to create the knowledge graph.
 
-### graph_creation.ipynb
+### io / export.ipynb
 
-This notebook is used to create the knowledge graph. It contains the code to create the nodes and relationships in the graph.
+This notebook is used to export the data from the graph to Excel files.
 
-### csv_export.ipynb
+### io / import.ipynb
 
-This notebook is used to export the data from the graph to CSV files. It contains the code to export the nodes and relationships in the graph.
+This notebook is used to import new data from an Excel file into the graph.
 
-### excel_export.ipynb
+### helpers / helper_functions.py
 
-This notebook is used to export the data from the graph to Excel files. It contains the code to export the nodes and relationships in the graph.
+This Python file contains all necessary functions used in the notebooks listed above.
+This is needed to avoid Code duplication and keep the whole project clean.
+
+### data - Directory
+
+In this directory there is one `export` and one `import` directory. In the `export` directory all exports will be
+saved. In the `import` directory you can store the data that should be added to the graph the next time you run
+the import notebook.
+
+### tests / tests.ipynb
+
+This notebook contains all functional and non-functional tests regarding this project.
+
+### setup.py
+
+This Python file is used to setup the whole project correctly. It's necessary to import all packages
+correctly afterwards.
 
 ## Structure of Knowledge Graph
 
@@ -39,7 +84,7 @@ This notebook is used to export the data from the graph to Excel files. It conta
 
 ### There are following relationships:
 
--   Doctor -> Topic: PECIALIST_IN
+-   Doctor -> Topic: SPECIALIST_IN
 -   Doctor -> Treatment: PRESCRIBES
 -   Doctor -> Diagnosis: HAS_DIAGNOSED
 -   Doctor -> Drug: PRESCRIBES
@@ -48,7 +93,7 @@ This notebook is used to export the data from the graph to Excel files. It conta
 
 -   Topic -> SubTopic: INCLUDES
 
--   Illness -> Caus: AUSED_BY
+-   Illness -> Cause: CAUSED_BY
 -   Illness -> SubTopic: BELONGS_TO
 -   Illness -> Treatment: TREATED_BY
 
@@ -60,6 +105,7 @@ This notebook is used to export the data from the graph to Excel files. It conta
 -   Patient -> Drug: TAKES
 -   Patient -> Diagnosis: RECEIVES
 -   Patient -> Allergy: HAS
+-   Patien -> Insurance: HAS
 -   Patient -> Hospital: VISITS
 
 -   Hospital -> Department: HAS
