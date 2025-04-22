@@ -223,4 +223,4 @@ def reset_db(graph: Graph) -> None:
     graph.run(query)
 
 
-    print(colored("!!! Database reset completed !!!", "green"))
+    print(colored("Database reset completed", "green"))
