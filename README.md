@@ -37,6 +37,8 @@ To start the project you need the follow the following steps:
 > ```
 > 
 > **Install dependencies**
+> 
+> Run inside the virtual environment:
 >   ```bash
 >   pip install -r requirements.txt
 >   ```
