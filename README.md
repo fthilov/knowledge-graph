@@ -1,33 +1,57 @@
 # Data Warehouse - Program Design
 
+---
+
 ## Start the Project
 
 To start the project you need the follow the following steps:
 
-1.  Run: `python setup.py install`
-2.  `Create` an export folder under the **data** directory
-3.  `Create` a virtual environment
-    1. Run: `python3 -m venv venv`
-    2. Run: `source venv/bin/activate`
-4.  Run: `pip install -r requirements.txt`
-5.  Install Neo4j for your computer:
-    1. Go to following [Website](https://neo4j.com/download/) and download **Neo4j Desktop**.
-    2. Fill out the **form** to register (tip: you can fill out the form with random data if you don't want to
-       expose private data)
-    3. Copy `Activation Key` to clipboard (you need the key later on)
-    4. Follow casual installation process
-    5. After you have agreeded the terms you can paste your `Activation Key` to the **Software Key** field
+(Run the following commands in the terminal)
+
+1. **Initialise Project**
+
+   ```bash
+   python setup.py install
+   ```
+
+2. **Prepare directories**
+   - Create a folder named `export` inside the `data` directory.
+
+3. **Create a virtual environment**
+   ```bash
+   python3 -m venv venv
+    ```
+   ```bash
+   source venv/bin/activate
+   ```
+
+4. **Install dependencies**
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+5. **Install Neo4j**
+   - Go to following [Website](https://neo4j.com/download/) and download **Neo4j Desktop**.
+   - Fill out the **form** to register (tip: you can fill out the form with random data if you don't want to
+      expose private data)
+   - Copy `Activation Key` to clipboard (you need the key later on)
+   - Follow casual installation process
+   - After you have agreeded the terms you can paste your `Activation Key` to the **Software Key** field
        to finish the installation process.
-6.  Setup Neo4j Desktop Database:
-    1. To create a new project, click the button in the top-left corner.
-    2. To add a local DBMS, click the blue "Add" button in the middle of the screen.
-    3. Enter "neo4j" as the name and "test1234" as the password. You can choose any name and password, but you'll
-       need to make a change in the init_connection function.
-    4. Click on "Create" and then start the database by clicking "Start"
-    5. You can now run the Jupyter Notebook. If you used a different combination of USERNAME and PASSWORD than
-       neo4j and test1234, be sure to change the values in the helper_functions file (init_connection()).
-7.  `Run` the main.ipynb notebook and select the virtual environment as kernel
-8.  Optional: You get a modal where you should click `Install`
+
+6. **Set up the Neo4j database**
+   - To create a new project, click the button in the top-left corner.
+   - To add a local DBMS, click the blue "Add" button in the middle of the screen.
+   - Enter "neo4j" as the name and "test1234" as the password. You can choose any name and password, 
+   but you'll need to make a change in the init_connection function.
+   - Click on "Create" and then start the database by clicking "Start"
+   - You can now run the Jupyter Notebook. If you used a different combination 
+   of USERNAME and PASSWORD than neo4j and test1234, be sure to change the values in the helper_functions file `init_connection()`.
+
+7. Run the `main.ipynb` notebook and select the virtual environment as kernel
+8. Optional: You get a modal where you should click `Install`
+
+---
 
 ## Structure of the Project
 
@@ -62,6 +86,8 @@ This notebook contains all functional and non-functional tests regarding this pr
 
 This Python file is used to setup the whole project correctly. It's necessary to import all packages
 correctly afterwards.
+
+---
 
 ## Structure of Knowledge Graph
 
