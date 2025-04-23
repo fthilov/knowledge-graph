@@ -7,21 +7,15 @@ def run_command(command, shell=True):
     print(f"\nRunning: {command}")
     subprocess.run(command, shell=shell, check=True)
 
-def create_directory(path):
-    os.makedirs(path, exist_ok=True)
-    print(f"Created directory: {path}")
 
 def main():
     # 1. Run setup.py install
     run_command("python setup.py install")
 
-    # 2. Create export directory
-    create_directory("data/export")
-
-    # 3. Create virtual environment
+    # 2. Create virtual environment
     run_command("python3 -m venv venv")
 
-    # 4. Install dependencies in virtual environment
+    # 3. Install dependencies in virtual environment
     current_os = platform.system()
 
     print("Installing dependencies in virtual environment...")
