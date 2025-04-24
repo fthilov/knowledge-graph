@@ -20,14 +20,19 @@ def main():
         print("Creating virtual environment...")
         run_command("python -m venv venv")
 
+        # ensurepip ausführen (holt pip+setuptools in die venv)
+        run_command("venv\\Scripts\\activate && python -m ensurepip --upgrade")
+
+        # und setuptools + wheel aktualisieren
+        run_command("venv\\Scripts\\activate && python -m pip install --upgrade pip setuptools wheel")
+
         # Install dependencies in virtual environment
         print("Installing dependencies in virtual environment...")
         run_command("venv\\Scripts\\activate && pip install -r requirements.txt")
 
         # Run setup.py install
         print("Running setup.py install...")
-        run_command("python setup.py install")
-
+        run_command("venv\\Scripts\\activate && python setup.py install")
     elif current_os in ["Darwin", "Linux"]:
         print("Detected OS: macOS/Linux")
 
