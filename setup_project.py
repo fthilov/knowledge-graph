@@ -7,9 +7,6 @@ def run_command(command, shell=True):
     print(f"\nRunning: {command}")
     subprocess.run(command, shell=shell, check=True)
 
-def create_directory(path):
-    os.makedirs(path, exist_ok=True)
-    print(f"Created directory: {path}")
 
 def main():
 
