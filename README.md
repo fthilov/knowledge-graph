@@ -10,39 +10,72 @@ To start the project you need the follow the following steps:
 
 1. **Initialise Project**
 
+   For Windows:
+
+   ```bash
+   python setup_project.py
+   ```
+
+   For MacOS:
    ```bash
    python3 setup_project.py
    ```
-
-   > **Note:** If `Initialise Project` does not work , you can activate the virtual environment and install the requirements manually:
+   
+   > **Note:** If `Initialise Project` does not work , you can activate the virtual environment and install the
+   > requirements manually:
    >
+   > **Windows**
    >
    > **Create a virtual environment**
-   >   ```bash
-   >   python3 -m venv venv
-   >    ```
+   >  ```bash
+   >  python -m venv venv
+   >  ```
    > **Activate the virtual environment**
-   > 
-   > Windows (CMD)
+   > CMD
    >  ```bash
    > venv\Scripts\activate.bat
    > ```
-   > Windows (PowerShell)
+   > PowerShell
    > ```bash
    > venv\Scripts\Activate.ps1
    > ```
-   > MacOS
-   >   ```bash
-   >   source venv/bin/activate
+   >
+   > **Run inside the virtual environment:**
+   >
    > ```
-   > 
+   > python -m ensurepip --upgrade
+   > ```
+   > ```
+   > python -m pip install --upgrade pip setuptools wheel
+   > ```
+   > ```
+   > pip install -r requirements.txt
+   > ```
+   > ```
+   > python setup.py install
+   > ```
+   >
+   > **MacOS**
+   >
+   > **Create a virtual environment**
+   > ```bash
+   > python3 -m venv venv
+   > ```
+   > **Activate the virtual environment**
+   >
+   >```bash
+   > source venv/bin/activate
+   > ```
+   >
    > **Install dependencies**
-   > 
+   >
    > Run inside the virtual environment:
-   >   ```bash
-   >   pip install -r requirements.txt
-   >   ```
-
+   > ```bash
+   > pip install -r requirements.txt
+   > ```
+   > ```bash
+   > python setup.py install
+   > ```   
 
 2. **Install Neo4j**
     - Go to [https://neo4j.com/download/](https://neo4j.com/download/) and download **Neo4j Desktop**.
@@ -103,6 +136,7 @@ This Python file is used to setup the whole project correctly. It's necessary to
 correctly afterwards.
 
 ### `setup_project.py`
+
 This Python file is used to setup the virtual environment and to install all necessary packages.
 
 ---
@@ -129,6 +163,7 @@ This Python file is used to setup the virtual environment and to install all nec
 ### Relations:
 
 **Doctor**
+
 - `Doctor` → `Topic`: `SPECIALIST_IN`
 - `Doctor` → `Treatment`: `PRESCRIBES`
 - `Doctor` → `Diagnosis`: `HAS_DIAGNOSED`
@@ -137,17 +172,21 @@ This Python file is used to setup the virtual environment and to install all nec
 - `Doctor` → `Hospital`: `WORKS_IN`
 
 **Topic**
+
 - `Topic` → `SubTopic`: `INCLUDES`
 
 **Illness**
+
 - `Illness` → `Cause`: `CAUSED_BY`
 - `Illness` → `SubTopic`: `BELONGS_TO`
 - `Illness` → `Treatment`: `TREATED_BY`
 
 **Symptom**
+
 - `Symptom` → `Illness`: `SYMPTOM_OF`
 
 **Patient**
+
 - `Patient` → `Illness`: `HAS`
 - `Patient` → `Symptom`: `SHOWS`
 - `Patient` → `Treatment`: `RECEIVES`
@@ -158,5 +197,6 @@ This Python file is used to setup the virtual environment and to install all nec
 - `Patient` → `Hospital`: `VISITS`
 
 **Hospital**
+
 - `Hospital` → `Department`: `HAS`
 
