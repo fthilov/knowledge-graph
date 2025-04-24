@@ -31,6 +31,7 @@ To start the project you need the follow the following steps:
    >  python -m venv venv
    >  ```
    > **Activate the virtual environment**
+   > 
    > CMD
    >  ```bash
    > venv\Scripts\activate.bat
@@ -66,8 +67,6 @@ To start the project you need the follow the following steps:
    >```bash
    > source venv/bin/activate
    > ```
-   >
-   > **Install dependencies**
    >
    > Run inside the virtual environment:
    > ```bash
