@@ -22,7 +22,6 @@ def init_connection() -> Graph | None:
         return graph
 
 
-# function to create a node with a label and properties 
 def get_all_labels(graph: Graph) -> list[str]:
     """
     Function to retrieve all labels from the Neo4j database.
