@@ -6,6 +6,8 @@
 
 To start the project you need the follow the following steps:
 
+Prerequisites: Python 3.12
+
 (Run the following commands in the terminal)
 
 1. **Initialise Project**
