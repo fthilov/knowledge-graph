@@ -6,7 +6,7 @@
 
 To start the project you need the follow the following steps:
 
-Prerequisites: Python 3.12
+Prerequisites: Python 3.12 & Jupyter Notebook
 
 (Run the following commands in the terminal)
 
@@ -56,6 +56,9 @@ Prerequisites: Python 3.12
    > ```
    > ```
    > python setup.py install
+   > ```
+   > ```
+   > python -m ipykernel install --user --name=venv --display-name "Python (venv)"
    > ```
    >
    > **MacOS**

@@ -33,6 +33,9 @@ def main():
         # Run setup.py install
         print("Running setup.py install...")
         run_command("venv\\Scripts\\activate && python setup.py install")
+
+        # Install ipykernel
+        run_command('venv\\Scripts\\activate && python -m ipykernel install --user --name=venv --display-name "Python (venv)"')
     elif current_os in ["Darwin", "Linux"]:
         print("Detected OS: macOS/Linux")
 
